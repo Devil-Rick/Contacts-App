@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import Navbar from './components/navbar/navbar';
+import Contacts from './pages/view_contact/contacts';
+import AddContact from './pages/add_contact/newContact';
+import Home from './pages/home/home';
 
 function App() {
+
+  // Creating routes using createBrowser Routes
+  const routes = createBrowserRouter([
+    {
+      path : '/', element : <Navbar />, children : [
+        {index : true, element : <Home />},
+        {path: 'addContact', element : <AddContact />},
+        {path: 'viewContact', element : <Contacts />},
+      ]
+    }
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RouterProvider router={routes} />
   );
 }
 

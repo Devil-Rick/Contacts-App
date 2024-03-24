@@ -5,6 +5,7 @@ import axios from "axios";
 const initialState = {
     contactList: [],
     showContact:false,
+    currId:null,
 }
 
 
@@ -32,6 +33,7 @@ const contactSlice = createSlice({
         },
         setShowContact : (state, action) => {
             state.showContact = true;
+            state.currId = action.payload
         }
     },
 });
@@ -42,3 +44,4 @@ export const contactAction = contactSlice.actions;
 
 export const contactSelector = (state)=>state.contactReducer.contactList;
 export const showContact = (state)=>state.contactReducer.showContact;
+export const currId = (state)=>state.contactReducer.currId;

@@ -5,6 +5,7 @@ import AddContact from './pages/add_contact/newContact';
 import Home from './pages/home/home';
 import { store } from './Redux/store/store';
 import { Provider } from 'react-redux';
+import UpdateContact from './pages/update_contact/updateContactPage';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         { index: true, element: <Home /> },
         { path: 'addContact', element: <AddContact /> },
         { path: 'viewContact', element: <Contacts /> },
+        { path: 'updateContact', element: <UpdateContact /> },
       ]
     }
   ]);

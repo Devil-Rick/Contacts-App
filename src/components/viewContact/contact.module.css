@@ -1,3 +1,8 @@
+
+p{
+    margin-bottom: 2px;
+}
+
 .contactView{
     display: flex;
     flex-wrap: wrap;
@@ -29,26 +34,23 @@
     background-color: #f72f2f;
 }
 
-
-
-/* .contact-item {
-    background-color: #fbf06a;
-    flex: 0 0 30.3333%;
-    padding: 10px 30px;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-right: 10px;
-    margin-bottom: 10px;
-}
-
-.contact-container {
-    flex: 0 0 60%;
-    display: flex;
-}
-
-.left {
-    display: flex;
+.contact{
     flex-direction: column;
 }
 
-*/
+.left {
+    flex-direction: column;
+    height: 60vh;
+    overflow: auto;
+    scrollbar-width: thin;
+    flex-wrap: nowrap;
+}
+
+.contactItem{
+    flex:0;
+}
+
+.contactContainer {
+    display: flex;
+    margin-top: 25px;
+}

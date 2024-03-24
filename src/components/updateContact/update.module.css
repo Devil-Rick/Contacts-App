@@ -1,3 +1,9 @@
+.updateContainer{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
 .updateComp{
     flex: 0 0 50%;
     display: inline-grid;
@@ -8,4 +14,28 @@
 .contactUpdate{
     display: flex;
     flex-wrap: wrap;
+}
+
+.contact{
+    flex-direction: column;
+}
+
+.btnHolder{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 3%;
+}
+
+.updateBtn{
+    padding: 5px 10px;
+    background-color: #11e811;
+    color: #0a0707;
+    font-weight: 600;
+    outline-style: double;
+}
+
+.delBtn{
+    background-color: #f38e2a;
+    margin-left: 10px;
 }

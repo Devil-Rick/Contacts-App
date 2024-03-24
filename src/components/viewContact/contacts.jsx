@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { contactThunk, contactSelector, showContact } from '../../Redux/reducers/contactReducers'
+import { contactThunk, contactSelector, showContact, currId } from '../../Redux/reducers/contactReducers'
 import styles from './contact.module.css'
 
 
 const ContactComp = (props) => {
-    const { update, contact } = props;
+    const { update } = props;
     const display = useSelector(showContact);
+    const contact = useSelector(currId);
 
     const allcontacts = useSelector(contactSelector)
     let contactItem = allcontacts[contact - 1]
-
 
     const dispatch = useDispatch();
 
@@ -19,18 +20,21 @@ const ContactComp = (props) => {
     }, [dispatch])
 
     return (
-        <>
+        <div className={`contact ${display && styles.contact}`}>
             <div>
-                Contacts Component Page
+                <h1>
+                    My Contacts
+                </h1>
+
             </div>
 
-            <div className="contact-container">
-                <div className="left">
+            <div className={`contact-container ${display && styles.contactContainer}`}>
+                <div className={`left ${display && styles.left}`}>
                     {allcontacts.map(contact => {
                         return (
-                            <div key={contact.id} className="contact-item" onClick={() => update(contact.id)}>
+                            <div key={contact.id} className={`contact-item ${display && styles.contactItem}`} onClick={() => update(contact.id)}>
                                 <p>Name : {contact.name}</p>
-                                <p>Email : {contact.email}</p>
+                                {display ? <></> : <p>Email : {contact.email}</p>}
                                 <p>Phone : {contact.phone}</p>
                             </div>
                         )
@@ -62,14 +66,17 @@ const ContactComp = (props) => {
                             </div>
 
                             <div className={styles.btnHolder}>
-                                <button className={styles.updateBtn}> UPDATE </button>
+                                <Link to='/updateContact'>
+                                    <button className={styles.updateBtn}> UPDATE </button>
+                                </Link>
+
                                 <button className={`${styles.updateBtn} ${styles.delBtn}`}> DELETE </button>
                             </div>
                         </div>
                     </div>
                 }
             </div>
-        </>
+        </div>
     )
 }
 

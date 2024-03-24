@@ -23,10 +23,13 @@ body {
 }
 
 .contact-container {
+  flex: 0 0 60%;
+}
+
+.left{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  flex: 0 0 60%;
 }
 
 .contact-item {
@@ -37,6 +40,15 @@ body {
   cursor: pointer;
   margin-right: 10px;
   margin-bottom: 10px;
+}
+
+.right{
+  background-color: #faf431;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border-radius: 20px;
 }
 
 code {

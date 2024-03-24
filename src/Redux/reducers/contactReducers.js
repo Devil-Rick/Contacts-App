@@ -4,6 +4,7 @@ import axios from "axios";
 // setting the initial state
 const initialState = {
     contactList: [],
+    showContact:false,
 }
 
 
@@ -29,6 +30,9 @@ const contactSlice = createSlice({
         setInitialState : (state , action) => {
             state.contactList = [...action.payload];
         },
+        setShowContact : (state, action) => {
+            state.showContact = true;
+        }
     },
 });
 
@@ -37,3 +41,4 @@ export const contactReducer = contactSlice.reducer;
 export const contactAction = contactSlice.actions;
 
 export const contactSelector = (state)=>state.contactReducer.contactList;
+export const showContact = (state)=>state.contactReducer.showContact;

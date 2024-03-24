@@ -1,0 +1,54 @@
+.contactView{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.viewComp{
+    flex: 0 0 50%;
+    display: inline-grid;
+    padding: 0 10px;
+    margin: 10px 0px;
+    justify-items: center;
+}
+
+.btnHolder{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.updateBtn{
+    padding: 5px 10px;
+    background-color: #11e811;
+    color: #0a0707;
+    font-weight: 600;
+    outline-style: double;
+}
+
+.delBtn{
+    background-color: #f72f2f;
+}
+
+
+
+/* .contact-item {
+    background-color: #fbf06a;
+    flex: 0 0 30.3333%;
+    padding: 10px 30px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.contact-container {
+    flex: 0 0 60%;
+    display: flex;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+}
+
+*/

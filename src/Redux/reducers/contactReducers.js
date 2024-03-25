@@ -12,25 +12,34 @@ const initialState = {
 // used to fetch all asynchronous calls regarding Api requests
 export const contactThunk = createAsyncThunk(
     'contact/getInitalContacts',
-    async (_, thunkApi) => {
+    async () => {
         // using axios to handle Api requests
         try {
             const res = await axios.get('https://jsonplaceholder.typicode.com/users')
-            thunkApi.dispatch(contactAction.setInitialState(res.data))
+            return res.data;
         } catch (err) {
             console.log(err);
         }
     }
 );
 
+export const addContactThunk = createAsyncThunk(
+    'contact/adddContact',
+    async (user) =>{
+        try {
+            const res = await axios.post('https://jsonplaceholder.typicode.com/users', user);
+            return res.data;
+        } catch (err) {
+            console.log(err);
+        }
+    }
+)
+
 // Setting and creating the actions and reducers
 const contactSlice = createSlice({
     name: 'Contact',
     initialState,
     reducers: {
-        setInitialState: (state, action) => {
-            state.contactList = [...action.payload];
-        },
         setShowContact: (state, action) => {
             if (action.payload === undefined) {
                 state.showContact = false;
@@ -40,6 +49,15 @@ const contactSlice = createSlice({
             }
         }
     },
+    extraReducers: (builder) => {
+        builder
+            .addCase(contactThunk.fulfilled, (state, action) => {
+                state.contactList = [...action.payload];
+            })
+            .addCase(addContactThunk.fulfilled, (state, action) => {
+                state.contactList.push(action.payload);
+            })
+    }
 });
 
 export const contactReducer = contactSlice.reducer;

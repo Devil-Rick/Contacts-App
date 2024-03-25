@@ -2,11 +2,26 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import styles from './add.module.css'
 
-const Add = ({view}) => {
+const Add = ({view, id, add}) => {
     const [name, setName] = useState()
     const [email, setEmail] = useState()
     const [phone, setPhone] = useState()
     const [city, setCity] = useState()
+
+    const addCon = (e) => {
+        e.preventDefault();
+        const data = {
+            id: id+1,
+            name,
+            email,
+            phone,
+            address : {
+                city,
+            }
+        }
+        console.log(data);
+        add(data);
+    }
 
 
     return (
@@ -14,7 +29,7 @@ const Add = ({view}) => {
             <div className={`contact contact-item ${styles.contact}`}>
                 <img className="logo" src={require("../../assets/images/add.png")} alt="add logo" />
 
-                <form action="" className={styles.contactAdd}>
+                <form action="" onSubmit={addCon} className={styles.contactAdd}>
                     <div className={styles.addComp}>
                         <label htmlFor="name">Name</label>
                         <input type="text" id="name" onChange={(e) => setName(e.target.value)} placeholder="Name"  />
@@ -36,7 +51,7 @@ const Add = ({view}) => {
                     </div>
 
                     <div className={styles.btnHolder}>
-                        <button className={styles.addBtn}> Add </button>
+                        <button className={styles.addBtn} type="Submit"> Add </button>
 
                         <Link to='/viewContact'>
                             <button className={`${styles.addBtn} ${styles.delBtn}`} onClick={view}> MY CONTACTS </button>

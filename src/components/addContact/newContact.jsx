@@ -32,22 +32,22 @@ const Add = ({view, id, add}) => {
                 <form action="" onSubmit={addCon} className={styles.contactAdd}>
                     <div className={styles.addComp}>
                         <label htmlFor="name">Name</label>
-                        <input type="text" id="name" onChange={(e) => setName(e.target.value)} placeholder="Name"  />
+                        <input type="text" id="name" onChange={(e) => setName(e.target.value)} placeholder="Name"  required/>
                     </div>
 
                     <div className={styles.addComp}>
                         <label htmlFor="email">Email</label>
-                        <input type="email" id="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+                        <input type="email" id="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" required/>
                     </div>
 
                     <div className={styles.addComp}>
                         <label htmlFor="phone">Phone</label>
-                        <input type="text" id="phone" onChange={(e) => setPhone(e.target.value)} placeholder="Phone Number" />
+                        <input type="text" id="phone" onChange={(e) => setPhone(e.target.value)} placeholder="Phone Number" required/>
                     </div>
 
                     <div className={styles.addComp}>
                         <label htmlFor="city">City</label>
-                        <input type="text" id="city" onChange={(e) => setCity(e.target.value)} placeholder="City"/>
+                        <input type="text" id="city" onChange={(e) => setCity(e.target.value)} placeholder="City" required/>
                     </div>
 
                     <div className={styles.btnHolder}>

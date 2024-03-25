@@ -18,6 +18,8 @@
 
 .contact{
     flex-direction: column;
+    margin-top: 0;
+    background-color: transparent;
 }
 
 .btnHolder{

@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { useState } from "react"
 import styles from './update.module.css'
 import { useSelector } from "react-redux"
 import { contactSelector, currId } from "../../Redux/reducers/contactReducers"
 
-const Update = () => {
+const Update = ({ updFunc }) => {
     const [name, setName] = useState()
     const [email, setEmail] = useState()
     const [phone, setPhone] = useState()
@@ -14,12 +13,8 @@ const Update = () => {
     const id = useSelector(currId)
     const contact = contacts[id - 1]
 
-
     return (
         <div className={styles.updateContainer}>
-            <h1>
-                Update Contact
-            </h1>
             <div className={`contact contact-item ${styles.contact}`}>
                 <img className="logo" src={require("../../assets/images/add.png")} alt="add logo" />
 
@@ -46,10 +41,9 @@ const Update = () => {
 
                     <div className={styles.btnHolder}>
                         <button className={styles.updateBtn}> UPDATE </button>
-
-                        <Link to='/viewContact'>
-                            <button className={`${styles.updateBtn} ${styles.delBtn}`}> BACK </button>
-                        </Link>
+                        <button className={`${styles.updateBtn} ${styles.delBtn}`} onClick={updFunc}>
+                            BACK
+                        </button>
                     </div>
                 </form>
             </div>

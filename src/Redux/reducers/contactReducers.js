@@ -35,6 +35,18 @@ export const addContactThunk = createAsyncThunk(
     }
 )
 
+export const removeContactThunk = createAsyncThunk(
+    'contact/removeContact',
+    async (id) =>{
+        try {
+            await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
+            return id;
+        } catch (err) {
+            console.log(err);
+        }
+    }
+);
+
 // Setting and creating the actions and reducers
 const contactSlice = createSlice({
     name: 'Contact',
@@ -56,6 +68,11 @@ const contactSlice = createSlice({
             })
             .addCase(addContactThunk.fulfilled, (state, action) => {
                 state.contactList.push(action.payload);
+            })
+            .addCase(removeContactThunk.fulfilled, (state, action) => {
+                console.log(action.payload);
+                const arr = state.contactList.filter(e => e.id !== action.payload);
+                state.contactList = arr;
             })
     }
 });

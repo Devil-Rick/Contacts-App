@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import styles from './update.module.css'
 import { useSelector } from "react-redux"
 import { contactSelector, currId } from "../../Redux/reducers/contactReducers"
@@ -46,7 +47,9 @@ const Update = () => {
                     <div className={styles.btnHolder}>
                         <button className={styles.updateBtn}> UPDATE </button>
 
-                        <button className={`${styles.updateBtn} ${styles.delBtn}`}> BACK </button>
+                        <Link to='/viewContact'>
+                            <button className={`${styles.updateBtn} ${styles.delBtn}`}> BACK </button>
+                        </Link>
                     </div>
                 </form>
             </div>
@@ -54,4 +57,4 @@ const Update = () => {
     )
 }
 
-export default Update
+export default Update 

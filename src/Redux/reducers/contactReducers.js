@@ -4,8 +4,8 @@ import axios from "axios";
 // setting the initial state
 const initialState = {
     contactList: [],
-    showContact:false,
-    currId:null,
+    showContact: false,
+    currId: null,
 }
 
 
@@ -21,19 +21,23 @@ export const contactThunk = createAsyncThunk(
             console.log(err);
         }
     }
-); 
+);
 
 // Setting and creating the actions and reducers
 const contactSlice = createSlice({
     name: 'Contact',
     initialState,
     reducers: {
-        setInitialState : (state , action) => {
+        setInitialState: (state, action) => {
             state.contactList = [...action.payload];
         },
-        setShowContact : (state, action) => {
-            state.showContact = true;
-            state.currId = action.payload
+        setShowContact: (state, action) => {
+            if (action.payload === undefined) {
+                state.showContact = false;
+            } else {
+                state.showContact = true;
+                state.currId = action.payload
+            }
         }
     },
 });
@@ -42,6 +46,6 @@ export const contactReducer = contactSlice.reducer;
 
 export const contactAction = contactSlice.actions;
 
-export const contactSelector = (state)=>state.contactReducer.contactList;
-export const showContact = (state)=>state.contactReducer.showContact;
-export const currId = (state)=>state.contactReducer.currId;
+export const contactSelector = (state) => state.contactReducer.contactList;
+export const showContact = (state) => state.contactReducer.showContact;
+export const currId = (state) => state.contactReducer.currId;

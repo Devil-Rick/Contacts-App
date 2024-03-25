@@ -1,0 +1,41 @@
+.addContainer{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.addComp{
+    flex: 0 0 50%;
+    display: inline-grid;
+    padding: 0 10px;
+    margin: 10px 0px;
+    justify-items: center;
+}
+.contactAdd{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contact{
+    flex-direction: column;
+}
+
+.btnHolder{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 3%;
+}
+
+.addBtn{
+    padding: 5px 10px;
+    background-color: #11e811;
+    color: #0a0707;
+    font-weight: 600;
+    outline-style: double;
+}
+
+.delBtn{
+    background-color: #f38e2a;
+    margin-left: 10px;
+}

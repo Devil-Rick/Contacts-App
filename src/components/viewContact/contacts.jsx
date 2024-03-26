@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { contactThunk, contactSelector, showContact, currId, removeContactThunk } from '../../Redux/reducers/contactReducers'
+import { contactSelector, showContact, currId, removeContactThunk } from '../../Redux/reducers/contactReducers'
 import styles from './contact.module.css'
 import User from "../viewUser/user"
 import Update from "../updateContact/update"
@@ -17,10 +17,6 @@ const ContactComp = (props) => {
     let contactItem = allcontacts[contact - 1]
 
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(contactThunk());
-    }, [dispatch])
 
     const updFunc = () => {
         setUpdateUser(!updateUser);
@@ -59,8 +55,8 @@ const ContactComp = (props) => {
                 {display &&
                     <div className="right">
                         {updateUser
-                            ? <Update updFunc={updFunc}/>
-                            : <User contactItem={contactItem} updFunc={updFunc} deleteUser={deleteUser}/>
+                            ? <Update updFunc={updFunc} />
+                            : <User contactItem={contactItem} updFunc={updFunc} deleteUser={deleteUser} />
                         }
                     </div>
                 }

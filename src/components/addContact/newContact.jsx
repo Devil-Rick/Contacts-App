@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import styles from './add.module.css'
 
 const Add = ({view, id, add}) => {
@@ -7,6 +7,8 @@ const Add = ({view, id, add}) => {
     const [email, setEmail] = useState()
     const [phone, setPhone] = useState()
     const [city, setCity] = useState()
+
+    const navigate = useNavigate();
 
     const addCon = (e) => {
         e.preventDefault();
@@ -19,8 +21,9 @@ const Add = ({view, id, add}) => {
                 city,
             }
         }
-        console.log(data);
         add(data);
+        view();
+        navigate('/viewContact')
     }
 
 
@@ -52,10 +55,6 @@ const Add = ({view, id, add}) => {
 
                     <div className={styles.btnHolder}>
                         <button className={styles.addBtn} type="Submit"> Add </button>
-
-                        <Link to='/viewContact'>
-                            <button className={`${styles.addBtn} ${styles.delBtn}`} onClick={view}> MY CONTACTS </button>
-                        </Link>
                     </div>
                 </form>
             </div>

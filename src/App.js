@@ -4,11 +4,13 @@ import Contacts from './pages/view_contact/contactPage';
 import AddContact from './pages/add_contact/newContact';
 import Home from './pages/home/home';
 import { store } from './Redux/store/store';
-import { Provider } from 'react-redux';
+import { Provider} from 'react-redux';
+
 
 function App() {
 
   // Creating routes using createBrowser Routes
+
   const routes = createBrowserRouter([
     {
       path: '/', element: <Navbar />, children: [

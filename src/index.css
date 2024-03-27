@@ -52,6 +52,15 @@ body {
   margin-left: 5%;
 }
 
+.cross {
+  position: relative;
+  top: -25%;
+  left: 47%;
+  width: 2%;
+  height: 5%;
+  cursor: pointer;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

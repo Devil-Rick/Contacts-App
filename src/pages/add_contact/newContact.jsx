@@ -11,7 +11,6 @@ const AddContact = () =>{
 
     const viewContacts = () => {
         dispatch(contactAction.setShowContact());
-        console.log('working');
     }
 
     const add = (user) => {

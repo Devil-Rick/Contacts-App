@@ -1,9 +1,16 @@
+import { useDispatch } from 'react-redux';
+import { contactAction } from '../../Redux/reducers/contactReducers';
 import styles from './user.module.css'
 const User = ({contactItem, updFunc, deleteUser}) => {
+    const dispatch = useDispatch();
+    const view = () => {
+        dispatch(contactAction.setShowContact())
+    }
 
     return (
         <>
             <img className="logo" src={require("../../assets/images/add.png")} alt="add logo" />
+            <img className="logo cross" onClick={view} src={require("../../assets/images/cross.png")} alt="cross" />
             <div className={styles.contactView}>
                 <div className={styles.viewComp}>
                     <h6>Name</h6>

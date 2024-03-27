@@ -14,10 +14,7 @@ const ContactComp = (props) => {
     const display = useSelector(showContact);
 
     const allcontacts = useSelector(contactSelector)
-    console.log(allcontacts, 'all contacts');
-
     let contactItem = allcontacts[useSelector(currId)];
-    console.log(useSelector(currId),'-', contactItem, 'contact item');
 
     const dispatch = useDispatch();
 
@@ -28,7 +25,6 @@ const ContactComp = (props) => {
 
     const deleteUser = (id) => {
         dispatch(removeContactThunk(id));
-        // dispatch(contactAction.setShowContact())
     }
 
 
@@ -60,7 +56,10 @@ const ContactComp = (props) => {
                     <div className="right">
                         {updateUser
                             ? <Update updFunc={updFunc} />
-                            : <User contactItem={contactItem} updFunc={updFunc} deleteUser={deleteUser} />
+                            : <User contactItem={contactItem}
+                                updFunc={updFunc}
+                                deleteUser={deleteUser}
+                            />
                         }
                     </div>
                 }

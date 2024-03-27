@@ -8,7 +8,6 @@ import { Provider} from 'react-redux';
 
 
 function App() {
-
   // Creating routes using createBrowser Routes
 
   const routes = createBrowserRouter([

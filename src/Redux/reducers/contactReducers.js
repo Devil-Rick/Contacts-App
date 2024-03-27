@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import {createSlice } from "@reduxjs/toolkit";
+import { contactThunk, addContactThunk, removeContactThunk } from "../thunk/thunk";
 
 // setting the initial state
 const initialState = {
@@ -7,45 +7,6 @@ const initialState = {
     showContact: false,
     currId: null,
 }
-
-
-// used to fetch all asynchronous calls regarding Api requests
-export const contactThunk = createAsyncThunk(
-    'contact/getInitalContacts',
-    async () => {
-        // using axios to handle Api requests
-        try {
-            const res = await axios.get('https://jsonplaceholder.typicode.com/users')
-            return res.data;
-        } catch (err) {
-            console.log(err);
-        }
-    }
-);
-
-export const addContactThunk = createAsyncThunk(
-    'contact/adddContact',
-    async (user) =>{
-        try {
-            const res = await axios.post('https://jsonplaceholder.typicode.com/users', user);
-            return res.data;
-        } catch (err) {
-            console.log(err);
-        }
-    }
-)
-
-export const removeContactThunk = createAsyncThunk(
-    'contact/removeContact',
-    async (id) =>{
-        try {
-            await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
-            return id;
-        } catch (err) {
-            console.log(err);
-        }
-    }
-);
 
 // Setting and creating the actions and reducers
 const contactSlice = createSlice({
@@ -57,7 +18,7 @@ const contactSlice = createSlice({
                 state.showContact = false;
             } else {
                 state.showContact = true;
-                state.currId = action.payload
+                state.currId = action.payload.index;
             }
         }
     },
@@ -70,9 +31,11 @@ const contactSlice = createSlice({
                 state.contactList.push(action.payload);
             })
             .addCase(removeContactThunk.fulfilled, (state, action) => {
-                console.log(action.payload);
                 const arr = state.contactList.filter(e => e.id !== action.payload);
                 state.contactList = arr;
+                if(state.contactList.length === state.currId){
+                    state.currId = 0;
+                }
             })
     }
 });

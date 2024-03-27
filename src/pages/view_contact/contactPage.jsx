@@ -7,8 +7,8 @@ import ContactComp from "../../components/viewContact/contacts";
 const Contacts = () => {
     const dispatch = useDispatch();
 
-    const updateContact = (id) => {
-        dispatch(contactAction.setShowContact(id))
+    const updateContact = (id, index) => {
+        dispatch(contactAction.setShowContact({id, index}))
     }
 
     return (

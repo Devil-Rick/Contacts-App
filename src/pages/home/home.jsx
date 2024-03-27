@@ -1,7 +1,7 @@
 import styles from './home.module.css';
 import { Link } from 'react-router-dom';
 import {useDispatch } from 'react-redux';
-import { contactThunk } from '../../Redux/reducers/contactReducers'
+import { contactThunk } from '../../Redux/thunk/thunk';
 import { useEffect } from "react";
 
 const Home = () => {

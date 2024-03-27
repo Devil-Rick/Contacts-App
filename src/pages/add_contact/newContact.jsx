@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import Add from "../../components/addContact/newContact";
-import { addContactThunk, contactAction, contactSelector } from "../../Redux/reducers/contactReducers";
+import { contactAction, contactSelector } from "../../Redux/reducers/contactReducers";
+import { addContactThunk } from "../../Redux/thunk/thunk";
 
 const AddContact = () =>{
 
@@ -10,6 +11,7 @@ const AddContact = () =>{
 
     const viewContacts = () => {
         dispatch(contactAction.setShowContact());
+        console.log('working');
     }
 
     const add = (user) => {

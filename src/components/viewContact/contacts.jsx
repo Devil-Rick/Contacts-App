@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { contactSelector, showContact, currId, removeContactThunk } from '../../Redux/reducers/contactReducers'
+import { contactSelector, showContact, currId } from '../../Redux/reducers/contactReducers'
+import { removeContactThunk } from "../../Redux/thunk/thunk"
 import styles from './contact.module.css'
 import User from "../viewUser/user"
 import Update from "../updateContact/update"
@@ -11,12 +12,15 @@ const ContactComp = (props) => {
     const [updateUser, setUpdateUser] = useState(false);
 
     const display = useSelector(showContact);
-    const contact = useSelector(currId);
 
     const allcontacts = useSelector(contactSelector)
-    let contactItem = allcontacts[contact - 1]
+    console.log(allcontacts, 'all contacts');
+
+    let contactItem = allcontacts[useSelector(currId)];
+    console.log(useSelector(currId),'-', contactItem, 'contact item');
 
     const dispatch = useDispatch();
+
 
     const updFunc = () => {
         setUpdateUser(!updateUser);
@@ -24,6 +28,7 @@ const ContactComp = (props) => {
 
     const deleteUser = (id) => {
         dispatch(removeContactThunk(id));
+        // dispatch(contactAction.setShowContact())
     }
 
 
@@ -36,17 +41,16 @@ const ContactComp = (props) => {
                         : 'My Contacts'
                     }
                 </h1>
-
             </div>
 
             <div className={`contact-container ${display && styles.contactContainer}`}>
                 <div className={`left ${display && styles.left}`}>
-                    {allcontacts.map(contact => {
+                    {allcontacts.map((c, index) => {
                         return (
-                            <div key={contact.id} className={`contact-item ${display && styles.contactItem}`} onClick={() => update(contact.id)}>
-                                <p>Name : {contact.name}</p>
-                                {display ? <></> : <p>Email : {contact.email}</p>}
-                                <p>Phone : {contact.phone}</p>
+                            <div key={c.id} className={`contact-item ${display && styles.contactItem}`} onClick={() => update(c.id, index)}>
+                                <p>Name : {c.name}</p>
+                                {display ? <></> : <p>Email : {c.email}</p>}
+                                <p>Phone : {c.phone}</p>
                             </div>
                         )
                     })}

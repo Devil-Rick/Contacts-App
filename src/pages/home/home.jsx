@@ -15,7 +15,7 @@ const Home = () => {
     return (
         <div className="contact">
             <h1>
-                working contacts page
+                Welcome <br/> User
             </h1>
 
             <div>

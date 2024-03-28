@@ -9,6 +9,10 @@ body {
   height: 100vh;
 }
 
+h1{
+  text-transform: capitalize;
+}
+
 .contact {
   height: 100%;
   display: flex;

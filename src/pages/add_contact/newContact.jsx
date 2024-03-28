@@ -20,7 +20,7 @@ const AddContact = () =>{
     return(
         <div className="contact">
             <h1>
-                Add Contacts Page
+                Add <br/> Contacts <br/> Page
             </h1>
             <Add view = {viewContacts} id = {contacts.length} add = {add} />
         </div>

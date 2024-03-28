@@ -1,5 +1,5 @@
-import {createSlice } from "@reduxjs/toolkit";
-import { contactThunk, addContactThunk, removeContactThunk } from "../thunk/thunk";
+import { createSlice } from "@reduxjs/toolkit";
+import { contactThunk, addContactThunk, removeContactThunk, updateContactThunk } from "../thunk/thunk";
 
 // setting the initial state
 const initialState = {
@@ -29,11 +29,17 @@ const contactSlice = createSlice({
             })
             .addCase(addContactThunk.fulfilled, (state, action) => {
                 state.contactList.push(action.payload);
+            }).addCase(updateContactThunk.fulfilled, (state, action) => {
+                const updateArr = state.contactList.map((contact) => {
+                    if (contact.id === action.payload.data.id) { return (action.payload.data) }
+                    return contact;
+                })
+                state.contactList = updateArr;
             })
             .addCase(removeContactThunk.fulfilled, (state, action) => {
                 const arr = state.contactList.filter(e => e.id !== action.payload);
                 state.contactList = arr;
-                if(state.contactList.length === state.currId){
+                if (state.contactList.length === state.currId) {
                     state.currId = 0;
                 }
             })

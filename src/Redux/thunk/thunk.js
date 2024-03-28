@@ -17,7 +17,7 @@ export const contactThunk = createAsyncThunk(
 
 export const addContactThunk = createAsyncThunk(
     'contact/adddContact',
-    async (user) =>{
+    async (user) => {
         try {
             const res = await axios.post('https://jsonplaceholder.typicode.com/users', user);
             return res.data;
@@ -27,9 +27,26 @@ export const addContactThunk = createAsyncThunk(
     }
 )
 
+export const updateContactThunk = createAsyncThunk(
+    'contact/updateContact',
+    async (inData) => {
+        try {
+            const res = await axios.put(`https://jsonplaceholder.typicode.com/users/${inData.id}`, {
+                name: inData.name,
+                email: inData.email,
+                phone: inData.phone,
+                address: { city: inData.city, },
+            });
+            return { data: res.data };
+        } catch (err) {
+            console.log(err);
+        }
+    }
+);
+
 export const removeContactThunk = createAsyncThunk(
     'contact/removeContact',
-    async (id) =>{
+    async (id) => {
         try {
             await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
             return id;
